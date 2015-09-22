@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">SaltSideCode</string>
+    <string name="app_name">Salt Side</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_dashboard_list">DashboardListActivity</string>
+    <string name="title_activity_dashboard_detail">DashboardDetailActivity</string>
 </resources>
