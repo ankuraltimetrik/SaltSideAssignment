@@ -11,4 +11,9 @@
         khsdbvkjdsbvbks  dskv s vnds v ds vds v ds vf s dv  ds v d
         sdk  vds v sddv d s v sd vsd  ds v  sd v s
           svd v sdv s v  sdSettings</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="please_wait">Please Wait</string>
+    <string name="loading_data">Loading data . . </string>
+    <string name="something_went_wrong">Something went wrong</string>
 </resources>

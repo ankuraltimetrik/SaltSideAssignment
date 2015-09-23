@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -78,7 +77,7 @@ public class DashboardListAdapter extends RecyclerView.Adapter<DashboardListAdap
         listViewHolder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Clicked ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "Clicked ", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, DashboardDetailActivity.class);
                 intent.putExtra("KEY", dashboardModel);

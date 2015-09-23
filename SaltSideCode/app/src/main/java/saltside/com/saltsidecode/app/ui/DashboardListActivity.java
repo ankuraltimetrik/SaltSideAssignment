@@ -36,8 +36,8 @@ public class DashboardListActivity extends AppCompatActivity {
     private void gettingDataFromServer() {
 
         final ProgressDialog progress = new ProgressDialog(this);
-        progress.setTitle("Please wait...");
-        progress.setMessage("Loading data...");
+        progress.setTitle(getString(R.string.please_wait));
+        progress.setMessage(getString(R.string.loading_data));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(false);
         progress.show();
@@ -52,9 +52,10 @@ public class DashboardListActivity extends AppCompatActivity {
 
             @Override
             public void success(List<DashboardModel> dashboardModels, Response response) {
-                System.out.println("repsonse success :" + response.getStatus());
-                System.out.println("Size  - - -" + dashboardModels.size());
-
+                if (RestConstant.SHOW_LOGS) {
+                    System.out.println("repsonse success :" + response.getStatus());
+                    System.out.println("Size  - - -" + dashboardModels.size());
+                }
                 initUiComponents(dashboardModels);
 
                 progress.dismiss();
@@ -62,13 +63,15 @@ public class DashboardListActivity extends AppCompatActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("repsonse error :" + error.getUrl());
-                System.out.println("repsonse error :" + error.getCause());
+                if (RestConstant.SHOW_LOGS) {
+                    System.out.println("repsonse error :" + error.getUrl());
+                    System.out.println("repsonse error :" + error.getCause());
+                }
                 progress.dismiss();
 
                 //TODO show alert
 
-                Toast.makeText(DashboardListActivity.this, "Something went wrong.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardListActivity.this, R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
             }
         });
     }
