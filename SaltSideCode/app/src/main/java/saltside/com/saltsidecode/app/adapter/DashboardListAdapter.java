@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import saltside.com.saltsidecode.R;
-import saltside.com.saltsidecode.app.model.ListModel;
+import saltside.com.saltsidecode.app.model.DashboardModel;
 import saltside.com.saltsidecode.app.ui.DashboardDetailActivity;
 
 /**
@@ -27,11 +27,11 @@ public class DashboardListAdapter extends RecyclerView.Adapter<DashboardListAdap
 
     //activity context for adapter
     private final Context mContext;
-    // beneficiary list List
-    private List<ListModel> mDataset;
+    // dashboard list List
+    private List<DashboardModel> mDataset;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public DashboardListAdapter(Context context, List<ListModel> myDataset) {
+    public DashboardListAdapter(Context context, List<DashboardModel> myDataset) {
 
         mDataset = myDataset;
         mContext = context;
@@ -51,21 +51,21 @@ public class DashboardListAdapter extends RecyclerView.Adapter<DashboardListAdap
     public void onBindViewHolder(ListViewHolder listViewHolder, int position) {
 // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final ListModel listModel = mDataset.get(position);
+        final DashboardModel dashboardModel = mDataset.get(position);
 
-        if (!TextUtils.isEmpty(listModel.getTitle())) {
-            listViewHolder.titleTextView.setText(listModel.getTitle());
+        if (!TextUtils.isEmpty(dashboardModel.title)) {
+            listViewHolder.titleTextView.setText(dashboardModel.title);
         } else {
             listViewHolder.titleTextView.setText("Name");
         }
-        if (!TextUtils.isEmpty(listModel.getDescription())) {
-            listViewHolder.descriptionTextView.setText(listModel.getDescription());
+        if (!TextUtils.isEmpty(dashboardModel.description)) {
+            listViewHolder.descriptionTextView.setText(dashboardModel.description);
         } else {
-            listViewHolder.descriptionTextView.setText("Name");
+            listViewHolder.descriptionTextView.setText("Descrip[tion");
         }
-        if (!TextUtils.isEmpty(listModel.getImage())) {
+        if (!TextUtils.isEmpty(dashboardModel.image)) {
             Picasso.with(mContext)
-                    .load(listModel.getImage())
+                    .load(dashboardModel.image)
                     .placeholder(R.mipmap.ic_launcher) // optional
                     .error(R.mipmap.ic_launcher)         // optional
                     .resize(120, 120)
@@ -81,7 +81,7 @@ public class DashboardListAdapter extends RecyclerView.Adapter<DashboardListAdap
                 Toast.makeText(mContext, "Clicked ", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, DashboardDetailActivity.class);
-                intent.putExtra("KEY", listModel);
+                intent.putExtra("KEY", dashboardModel);
                 mContext.startActivity(intent);
 
             }

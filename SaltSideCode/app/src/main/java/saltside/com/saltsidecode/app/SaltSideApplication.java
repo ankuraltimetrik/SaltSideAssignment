@@ -11,6 +11,5 @@ public class SaltSideApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-//        Picasso picasso = new Picasso();
     }
 }
