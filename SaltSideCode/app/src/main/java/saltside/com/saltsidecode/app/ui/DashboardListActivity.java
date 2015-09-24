@@ -2,7 +2,6 @@ package saltside.com.saltsidecode.app.ui;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -18,15 +17,21 @@ import saltside.com.saltsidecode.app.adapter.DashboardListAdapter;
 import saltside.com.saltsidecode.app.model.DashboardModel;
 import saltside.com.saltsidecode.app.network.SaltSideAppi;
 import saltside.com.saltsidecode.app.utility.RestConstant;
+import saltside.com.saltsidecode.app.utility.Util;
 
-public class DashboardListActivity extends AppCompatActivity {
+public class DashboardListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_list);
 
-        gettingDataFromServer();
+        if (Util.checkNetworkConnection(DashboardListActivity.this)) {
+            gettingDataFromServer();
+        } else {
+            // TODO network alert
+            Toast.makeText(DashboardListActivity.this, R.string.network_down, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
